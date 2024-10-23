@@ -40,8 +40,10 @@
                                         <p class="fs-2">Price: <span class="price" id="price-{{ $item->id }}">{{ $item->price }}</span> BDT</p>
                                         <p>Quantity:</p>
                                         <input type="number" id="quantity-{{ $item->id }}" class="quantity form-control mb-2" value="1" min="1">
-                                        <a href="{{ route('BuyItem', $item->id) }}" class="buy" id="buy-{{ $item->id }}" class="btn btn-block add-to-cart" data-id="{{ $item->id }}">
-                                        <button >Add to Cart</button></a>
+                                        <a href="{{ route('BuyItem', $item->id) }}" class="buy" id="buy-{{ $item->id }}" data-id="{{ $item->id }}">
+                                            <button id="add-to-cart-{{ $item->id }}" class="btn btn-primary add-to-cart">Add to Cart</button>
+                                        </a>
+                                        
                                     </div>
                                 </div>
                             </div>

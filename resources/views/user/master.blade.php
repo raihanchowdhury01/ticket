@@ -53,46 +53,48 @@
             <!-- small device menu -->
             {{-- this code aren't working in live server --}}
             <i class="fa-solid fa-bars fs-1 openBar d-block d-md-none"></i>
-            <div class="scale openMenu d-md-none d-block">
-                <i class="fa-solid fa-x text-white p-3 closeBar"></i>
-                <nav class="my-5 container">
-                    <div class="gap-5">
-                        <div>
-                            @if (Route::has('login'))
-                                <nav class="">
-                                    <ul class="sm_ul px-3 py-2">
-                                        <li><a href="{{ asset('/') }}">Home</a></li>
-                                        <li><a href="{{ asset('/') }}">Shop</a></li>
-                                        <li><a href="{{ asset('ticket') }}">Ticket</a></li>
-                                        
-                                    </ul>
-                                    @auth
-                                        <a href="{{ url('/dashboard') }}" class="text-decoration-none ath" > Dashboard </a>
-                                        <form method="POST" action="{{ route('logout') }}" class="ath">
-                                            @csrf
-                                        
-                                            <x-responsive-nav-link :href="route('logout')"
-                                                    onclick="event.preventDefault();
-                                                                this.closest('form').submit();">
-                                                {{ __('Log Out') }}
-                                            </x-responsive-nav-link>
-                                        </form>
-                                        @else
-                                        <div>
-                                            <a href="{{ route('login') }}" class="px-3 py-2 text-decoration-none ath" > Log in </a>
-                                        </div>
-                    
-                                        @if (Route::has('register'))
-                                        <div>
-                                            <a href="{{ route('register') }}" class="px-3 py-2 text-decoration-none ath"> Register </a>
-                                        </div>
-                                        @endif
-                                    @endauth
-                                </nav>
-                            @endif
+            <div class=" d-md-none d-block">
+                <div class="scale openMenu">
+                    <i class="fa-solid fa-x text-white p-3 closeBar"></i>
+                    <nav class="my-5 container">
+                        <div class="gap-5">
+                            <div>
+                                @if (Route::has('login'))
+                                    <nav class="">
+                                        <ul class="sm_ul px-3 py-2">
+                                            <li><a href="{{ asset('/') }}">Home</a></li>
+                                            <li><a href="{{ asset('/') }}">Shop</a></li>
+                                            <li><a href="{{ asset('ticket') }}">Ticket</a></li>
+                                            
+                                        </ul>
+                                        @auth
+                                            <a href="{{ url('/dashboard') }}" class="text-decoration-none ath" > Dashboard </a>
+                                            <form method="POST" action="{{ route('logout') }}" class="ath">
+                                                @csrf
+                                            
+                                                <x-responsive-nav-link :href="route('logout')"
+                                                        onclick="event.preventDefault();
+                                                                    this.closest('form').submit();">
+                                                    {{ __('Log Out') }}
+                                                </x-responsive-nav-link>
+                                            </form>
+                                            @else
+                                            <div>
+                                                <a href="{{ route('login') }}" class="px-3 py-2 text-decoration-none ath" > Log in </a>
+                                            </div>
+                        
+                                            @if (Route::has('register'))
+                                            <div>
+                                                <a href="{{ route('register') }}" class="px-3 py-2 text-decoration-none ath"> Register </a>
+                                            </div>
+                                            @endif
+                                        @endauth
+                                    </nav>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                </nav>
+                    </nav>
+                </div>
             </div>
         </header>
 

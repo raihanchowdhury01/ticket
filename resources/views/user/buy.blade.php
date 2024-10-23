@@ -17,6 +17,23 @@
     <div>
         <!-- Product Purchase Form -->
         <div class="container mt-5">
+                <!-- Show success message -->
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+<!-- Show validation errors -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                     <h2 class="text-center mb-4">Shop Product Purchase</h2>
                     <form action="{{ route('storePage') }}" method="POST" class="form">
                         @csrf
@@ -25,12 +42,15 @@
                             <!-- Name -->
                             <div class="col-md-6 mb-3">
                                 <p>Your Ticket Name:</p>
-                                <input type="text" name="name" id="" required>
+                                <input type="text" name="name" id="" value="{{old('name')}}" required>
                             </div>
                             <!-- Number -->
                             <div class="col-md-6 mb-3">
                                 <p>Your Contact Number:</p>
-                                <input type="number" name="number" id="" required>
+                                <input type="number" name="number" id="" value="{{old('number')}}" required>
+                                @error('number')
+                                    <p class="text-danger">Input your valid phone number</p>
+                                @enderror
                             </div>
                             <!-- Product Name -->
                             <div class="col-md-6 mb-3">

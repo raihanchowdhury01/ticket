@@ -29,14 +29,16 @@ class UserController extends Controller
 
     public function store(Request $request){
         $check = [
-            'name' => 'required',
-            'number' => 'required',
+            'name' => 'required|string',
+            'number' => 'required|numeric',
             'product_name' => 'required',
-            'unit_price' => 'required',
-            'sum_price' => 'required',
+            'unit_price' => 'required|numeric',
+            'sum_price' => ['required', 'numeric', 'gte:unit_price'],
         ];
-
-        $valid = Validator::make($request->all(), $check);
+        $customMessages = [
+            'sum_price.gte' => 'পণ্যের সংখ্যা সর্বনিম্ন ১ টি বা তার চেয়ে বেশি হতে হবে। (Quantity of products must be minimum 1 or more.)',
+        ];
+        $valid = Validator::make($request->all(), $check, $customMessages);
         if($valid->fails()){
             return redirect()->back()->withInput()->withErrors($valid->errors());
         }

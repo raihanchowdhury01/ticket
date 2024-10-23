@@ -15,12 +15,13 @@
         <header>
             <!-- large device menu -->
             <div class="d-none d-md-block">
-                <nav class="my-5">
+                <nav class="my-5 container">
                     <div class="d-flex justify-content-between gap-5">
                         <ul class="sm_ul">
                             <li><a href="{{ asset('/') }}" class="text-black">Home</a></li>
                             <li><a href="{{ asset('/') }}" class="text-black">Shop</a></li>
-                            <li><a href="{{ asset('ticket') }}" class="text-black">Ticket</a></li>
+                            <li><a href="{{ route('ticketPage') }}" class="text-black">Ticket</a></li>
+                            
                         </ul>
                         <div>
                             @if (Route::has('login'))
@@ -29,9 +30,10 @@
                                         <a href="{{ url('/dashboard') }}" class=" text-black text-decoration-none" > Dashboard </a>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
+                                        
                                             <x-responsive-nav-link :href="route('logout')"
                                                     onclick="event.preventDefault();
-                                                                this.closest('form').submit();" class="text-decoration-none text-black">
+                                                                this.closest('form').submit();">
                                                 {{ __('Log Out') }}
                                             </x-responsive-nav-link>
                                         </form>
@@ -48,12 +50,12 @@
                     </div>
                 </nav>
             </div>
-
-            {{-- small device --}}
+            <!-- small device menu -->
+            {{-- this code aren't working in live server --}}
             <i class="fa-solid fa-bars fs-1 openBar d-block d-md-none"></i>
-            <div class="scale openMenu">
+            <div class="scale openMenu d-md-none d-block">
                 <i class="fa-solid fa-x text-white p-3 closeBar"></i>
-                <nav class="my-5 container d-md-none d-block">
+                <nav class="my-5 container">
                     <div class="gap-5">
                         <div>
                             @if (Route::has('login'))
@@ -71,7 +73,7 @@
                                         
                                             <x-responsive-nav-link :href="route('logout')"
                                                     onclick="event.preventDefault();
-                                                                this.closest('form').submit();" class="text-decoration-none text-white">
+                                                                this.closest('form').submit();">
                                                 {{ __('Log Out') }}
                                             </x-responsive-nav-link>
                                         </form>

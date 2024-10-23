@@ -2,7 +2,6 @@
 
 .sm_ul{
     width: 100%;
-    display: flex;
     margin: auto;
     font-weight: 700;
     font-size: medium;
@@ -10,15 +9,59 @@
 @media (min-width: 769px) {
     .sm_ul{
         width: 50%;
-    }
-}
-.sm_ul>li{
+        display: flex;
+        }
+    .sm_ul>li>a, .ath{
+        text-decoration: none;
+        }
+    .sm_ul>li{
     list-style-type: none;
     margin: 0px 20px;
 }
-.sm_ul>li>a{
-    text-decoration: none;
+
 }
+.sm_ul>li{
+    list-style-type: none;
+    margin:20px;
+}
+.sm_ul>li>a, .ath{
+    text-decoration: none;
+    color: white;
+}
+
+/* small menu */
+
+.openMenu{
+    background-color: #218838;
+}
+.openBar{
+    cursor: pointer;
+    float: right;
+}
+.closeBar{
+    cursor: pointer;
+    float: right;
+    font-size: 25px;
+}
+.scale{
+    position: fixed;
+    right: -300px;
+    width: 200px;
+    height: 100%;
+    background-color: black;
+    transition: .3s ease-in-out 0.3s;
+    z-index: 1;
+}
+.scales{
+    position: fixed;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: black;
+    transition: .3s ease-in-out;
+    z-index: 1;
+}
+/* small menu */
 
 .home_banner{
     width: 100%;

@@ -13,14 +13,38 @@
     </head>
     <body>
         <header>
-            <!-- small device menu -->
-            <div>
+            <!-- large device menu -->
+            <div class="d-none d-md-block">
                 <nav class="my-5">
                     <div class="d-flex justify-content-between gap-5">
                         <ul class="sm_ul text-black">
                             <li><a href="{{ route('homepage') }}" class="text-black">Home</a></li>
                             <li><a href="{{ route('dashboard') }}" class="text-black">Profile</a></li>
                             <li><a href="{{ route('profile.update') }}" class="text-black">Profile Edit</a></li>
+                            <form method="POST" action="{{ route('logout') }}" class="mt-3">
+                                @csrf
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-responsive-nav-link>
+                            </form>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            {{-- small device --}}
+            <!-- small device menu -->
+            <div class="d-block d-md-none">
+                <nav class="my-5">
+                    <i class="fa-solid fa-bars fs-1 openBar d-block d-md-none"></i>
+                    <div class="d-flex justify-content-between gap-5 scale openMenu">
+                        <i class="fa-solid fa-x text-white p-3 closeBar"></i>
+                        <ul class="sm_ul text-black">
+                            <li><a href="{{ route('homepage') }}" class="text-white">Home</a></li>
+                            <li><a href="{{ route('dashboard') }}" class="text-white">Profile</a></li>
+                            <li><a href="{{ route('profile.update') }}" class="text-white">Profile Edit</a></li>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <x-responsive-nav-link :href="route('logout')"
@@ -37,7 +61,7 @@
         <main>
             <!-- banner part design -->
             <div class="my-5">
-                <img src="/img/home.png" alt class="home_banner">
+                <img src="{{ url('/img/home.png') }}" alt class="home_banner">
             </div>
             {{-- user details --}}
             <table class="table">
@@ -65,5 +89,20 @@
         </footer>
         <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js') }}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="{{ asset('script.js') }}"></script>
+
+        <script>
+            // small device menu bar slide script
+            const openBtn = document.querySelector(".openBar");
+            const closeBtn = document.querySelector(".closeBar");
+            const openMenu = document.querySelector(".openMenu");
+            openBtn.addEventListener("click", ()=>{
+                openMenu.classList.remove('scale');
+                openMenu.classList.add('scales');
+            });
+            closeBtn.addEventListener("click", ()=>{
+                openMenu.classList.remove('scales');
+                openMenu.classList.add('scale');
+            });
+        </script>
     </body>
 </html>

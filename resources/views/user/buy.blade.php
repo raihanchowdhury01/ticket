@@ -6,7 +6,7 @@
 @section('body_content')
 <!-- banner part design -->
 <div class="my-5">
-    <img src="/img/home.png" alt class="home_banner">
+    <img src="{{ url('/img/home.png') }}" alt class="home_banner">
 </div>
 <!-- instruction section design -->
 <div>
@@ -18,7 +18,7 @@
         <!-- Product Purchase Form -->
         <div class="container mt-5">
                     <h2 class="text-center mb-4">Shop Product Purchase</h2>
-                    <form action="{{ route('storePage') }}" method="POST">
+                    <form action="{{ route('storePage') }}" method="POST" class="form">
                         @csrf
 
                         <div class="row">
@@ -48,7 +48,6 @@
                             <!-- Total Amount -->
                             <div class="col-md-6 mb-3">
                                 <label for="totalAmount" class="form-label">Total Amount (BDT)</label><br>
-                                {{-- <p id="sum"></p> --}}
                                 <input type="number" name="sum_price" id="sum" readonly>
                             </div>
                         </div>

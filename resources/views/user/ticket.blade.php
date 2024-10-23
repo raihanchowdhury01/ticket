@@ -13,8 +13,8 @@
     </head>
     <body>
         <header>
-            <!-- small device menu -->
-            <div>
+            <!-- large device menu -->
+            <div class="d-none d-md-block">
                 <nav class="my-5">
                     <div class="d-flex justify-content-between gap-5">
                         <ul class="sm_ul">
@@ -48,11 +48,55 @@
                     </div>
                 </nav>
             </div>
+
+            {{-- small device --}}
+            <i class="fa-solid fa-bars fs-1 openBar d-block d-md-none"></i>
+            <div class="scale openMenu">
+                <i class="fa-solid fa-x text-white p-3 closeBar"></i>
+                <nav class="my-5 container d-md-none d-block">
+                    <div class="gap-5">
+                        <div>
+                            @if (Route::has('login'))
+                                <nav class="">
+                                    <ul class="sm_ul px-3 py-2">
+                                        <li><a href="{{ asset('/') }}">Home</a></li>
+                                        <li><a href="{{ asset('/') }}">Shop</a></li>
+                                        <li><a href="{{ asset('ticket') }}">Ticket</a></li>
+                                        
+                                    </ul>
+                                    @auth
+                                        <a href="{{ url('/dashboard') }}" class="text-decoration-none ath" > Dashboard </a>
+                                        <form method="POST" action="{{ route('logout') }}" class="ath">
+                                            @csrf
+                                        
+                                            <x-responsive-nav-link :href="route('logout')"
+                                                    onclick="event.preventDefault();
+                                                                this.closest('form').submit();">
+                                                {{ __('Log Out') }}
+                                            </x-responsive-nav-link>
+                                        </form>
+                                        @else
+                                        <div>
+                                            <a href="{{ route('login') }}" class="px-3 py-2 text-decoration-none ath" > Log in </a>
+                                        </div>
+                    
+                                        @if (Route::has('register'))
+                                        <div>
+                                            <a href="{{ route('register') }}" class="px-3 py-2 text-decoration-none ath"> Register </a>
+                                        </div>
+                                        @endif
+                                    @endauth
+                                </nav>
+                            @endif
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </header>
         <main>
             <!-- banner part design -->
             <div class="my-5">
-                <img src="/img/home.png" alt class="home_banner">
+                <img src="{{ url('/img/home.png') }}" alt class="home_banner">
             </div>
             <!-- instruction section design -->
             <div>
@@ -87,5 +131,19 @@
         </footer>
         <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js') }}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="{{ asset('script.js') }}"></script>
+        <script>
+            // small device menu bar slide script
+            const openBtn = document.querySelector(".openBar");
+            const closeBtn = document.querySelector(".closeBar");
+            const openMenu = document.querySelector(".openMenu");
+            openBtn.addEventListener("click", ()=>{
+                openMenu.classList.remove('scale');
+                openMenu.classList.add('scales');
+            });
+            closeBtn.addEventListener("click", ()=>{
+                openMenu.classList.remove('scales');
+                openMenu.classList.add('scale');
+            });
+        </script>
     </body>
 </html>

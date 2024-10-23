@@ -34,7 +34,7 @@
                             <!-- Card -->
                             <div class="col-12 col-md-4 col-lg-3 mb-4">
                                 <div class="card h-100">
-                                    <img src="{{ url('Uploaded_Photo/'. $item->image) }}" class="card-img-top card-image fixed-size" alt="Product 1">
+                                    <img src="{{ url('Uploaded_Photo/'. $item->image) }}" class="card-img-top card-image" alt="Product 1">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $item->name }}</h5>
                                         <p class="fs-2">Price: <span class="price" id="price-{{ $item->id }}">{{ $item->price }}</span> BDT</p>
@@ -43,7 +43,6 @@
                                         <a href="{{ route('BuyItem', $item->id) }}" class="buy" id="buy-{{ $item->id }}" data-id="{{ $item->id }}">
                                             <button id="add-to-cart-{{ $item->id }}" class="btn btn-primary add-to-cart">Add to Cart</button>
                                         </a>
-                                        
                                     </div>
                                 </div>
                             </div>

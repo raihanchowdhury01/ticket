@@ -49,7 +49,7 @@
                                 <p>Your Contact Number:</p>
                                 <input type="number" name="number" id="" value="{{old('number')}}" required>
                                 @error('number')
-                                    <p class="text-danger">Input your valid phone number</p>
+                                    <p class="text-danger">{{$message}}</p>
                                 @enderror
                             </div>
                             <!-- Product Name -->

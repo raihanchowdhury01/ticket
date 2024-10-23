@@ -25,6 +25,10 @@ require __DIR__.'/auth.php';
 Route::get('admin', [AdminController::class, 'index'])->name('itemForm')->middleware(['auth', 'admin']);
 Route::post('store/item', [AdminController::class, 'storage'])->name('storeAddItem')->middleware(['auth', 'admin']);
 Route::get('view', [AdminController::class, 'itemView'])->name('itemPage')->middleware(['auth', 'admin']);
+Route::get('edit/{id}', [AdminController::class, 'editing'])->name('editPage')->middleware(['auth', 'admin']);
+Route::post('update/product/{id}', [AdminController::class, 'update'])->name('updatePage')->middleware(['auth', 'admin']);
+Route::get('delete-item/{id}', [AdminController::class, 'deleted'])->name('deletePage')->middleware(['auth', 'admin']);
+Route::get('ticket-audit-page/view', [AdminController::class, 'tickets'])->name('ticketAuditPage')->middleware('auth');
 
 // user section route
 Route::get('/', [UserController::class, 'home'])->name('homepage');
@@ -32,7 +36,7 @@ Route::get('buy-item/{id}', [UserController::class, 'product'])->name('BuyItem')
 Route::post('store', [UserController::class, 'store'])->name('storePage')->middleware('auth');
 
 
-Route::get('ticket', [UserController::class, 'ticket'])->name('ticketPage')->middleware('auth');
+Route::get('ticket-page/view', [UserController::class, 'ticket'])->name('ticketPage')->middleware('auth');
 
 // ticket page
 

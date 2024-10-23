@@ -108,49 +108,18 @@
          </footer>
          <script src="{{ asset('script.js') }}"></script>
          <script>
-
-// payment controller section script 
-// I was comment all tag here for unkown code error
-//     document.addEventListener('DOMContentLoaded', function () {
-//     const form = document.querySelector('.form');
-//     form.addEventListener('submit', function(event) {
-//         event.preventDefault();
-
-//         const sum = document.getElementById('sum').innerText;
-//         fetch('/process-payment', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
-//             },
-//             body: JSON.stringify({ amount: sum })
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.status === 'success') {
-//                 form.submit();
-//             } else {
-//                 alert('Payment failed! Please try again.');
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//         });
-//     });
-// });
-
-// small device menu bar slide script
-const openBtn = document.querySelector(".openBar");
-const closeBtn = document.querySelector(".closeBar");
-const openMenu = document.querySelector(".openMenu");
-openBtn.addEventListener("click", ()=>{
-    openMenu.classList.remove('scale');
-    openMenu.classList.add('scales');
-});
-closeBtn.addEventListener("click", ()=>{
-    openMenu.classList.remove('scales');
-    openMenu.classList.add('scale');
-});
+            // small device menu bar slide script
+            const openBtn = document.querySelector(".openBar");
+            const closeBtn = document.querySelector(".closeBar");
+            const openMenu = document.querySelector(".openMenu");
+            openBtn.addEventListener("click", ()=>{
+                openMenu.classList.remove('scale');
+                openMenu.classList.add('scales');
+            });
+            closeBtn.addEventListener("click", ()=>{
+                openMenu.classList.remove('scales');
+                openMenu.classList.add('scale');
+            });
         </script>
         <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js') }}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
